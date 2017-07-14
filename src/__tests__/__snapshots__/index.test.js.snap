@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validator should decode uri parts before validating an email address 1`] = `[Error: E-mail address has not a valid signature]`;
+
+exports[`validator should error when no dns records are found 1`] = `[Error: Hostname does not have any DNS records attached]`;
+
+exports[`validator should error when not specifiying an email 1`] = `[Error: E-mail address not specified]`;
+
+exports[`validator should error when passing an invalid email syntax 1`] = `[Error: E-mail address has not a valid signature]`;
+
+exports[`validator should error when passing an invalid syntax for a specific host 1`] = `[Error: E-mail address did not match the rules for gmail.com]`;
+
+exports[`validator should error when specifiying value () => {} 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value [] 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value {} 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value 5 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value false 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value null 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should error when specifiying value true 1`] = `[Error: E-mail address is not a string]`;
+
+exports[`validator should validate an email address 1`] = `true`;

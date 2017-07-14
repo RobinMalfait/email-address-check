@@ -17,6 +17,9 @@ async function validateEmail(email) {
     throw new Error("E-mail address is not a string");
   }
 
+  // Make sure the email address does not contain encoded characters
+  email = decodeURIComponent(email);
+
   // Make sure the email address is in lowercase
   email = email.toLowerCase();
 
