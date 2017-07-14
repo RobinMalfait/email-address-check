@@ -9,6 +9,7 @@
     "url": "https://github.com/RobinMalfait/email-address-check.git"
   },
   "scripts": {
+    "start": "micro service/index.js",
     "build": "NODE_ENV=production rollup -c",
     "watch": "npm run build -- --watch",
     "test": "NODE_ENV=test jest",
@@ -37,5 +38,11 @@
     "rollup-watch": "^4.3.1",
     "semantic-release": "^6.3.6",
     "uglify-es": "^3.0.24"
+  },
+  "dependencies": {
+    "micro": "^7.3.3",
+    "micro-compress": "^1.0.0",
+    "micro-cors": "^0.0.4",
+    "micro-middleware": "^0.1.0"
   }
 }
