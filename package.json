@@ -4,6 +4,10 @@
   "description": "Validate e-mail addresses based on syntax and dns records",
   "main": "lib/validate-email.js",
   "module": "lib/validate-email.es6.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobinMalfait/email-address-check.git"
+  },
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
     "watch": "NODE_ENV=production rollup -c --watch",
