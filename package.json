@@ -1,6 +1,6 @@
 {
   "name": "email-address-check",
-  "version": "0.3.0",
+  "version": "0.0.0-development",
   "description": "Validate e-mail addresses based on syntax and dns records",
   "main": "lib/validate-email.js",
   "module": "lib/validate-email.es6.js",
@@ -10,9 +10,11 @@
   },
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
-    "watch": "NODE_ENV=production rollup -c --watch",
+    "watch": "npm run build -- --watch",
     "test": "NODE_ENV=test jest",
-    "tdd": "NODE_ENV=test jest --watchAll"
+    "tdd": "npm run test -- --watchAll",
+    "publish-coverage": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [],
   "author": "Robin Malfait <malfait.robin@gmail.com>",
@@ -32,6 +34,10 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.3.1",
+    "semantic-release": "^6.3.6",
     "uglify-es": "^3.0.24"
+  },
+  "dependencies": {
+    "codecov": "^2.2.0"
   }
 }

@@ -1,13 +1,17 @@
-sudo: false
 language: node_js
-node_js:
-  - "7"
 cache: 
   yarn: true
   directories:
     - node_modules
+notifications:
+  email: false
+node_js:
+  - '7'
 before_script:
-  - travis_retry yarn
-script:
-  - travis_retry yarn test
   - travis_retry yarn build
+after_success:
+  - yarn publish-coverage
+  - yarn semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
