@@ -8,7 +8,7 @@ import { minify } from "uglify-es";
 const PACKAGE = require("./package.json");
 
 export default {
-  entry: "src/index.js",
+  entry: "./src/index.js",
   targets: [
     {
       format: "umd",

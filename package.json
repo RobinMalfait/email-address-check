@@ -2,14 +2,13 @@
   "name": "email-address-check",
   "version": "0.0.0-development",
   "description": "Validate e-mail addresses based on syntax and dns records",
-  "main": "lib/validate-email.js",
-  "module": "lib/validate-email.es6.js",
+  "main": "./lib/validate-email.js",
+  "module": "./lib/validate-email.es6.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/RobinMalfait/email-address-check.git"
   },
   "scripts": {
-    "prestart": "yarn build",
     "start": "micro service/index.js",
     "build": "NODE_ENV=production rollup -c",
     "watch": "yarn build -- --watch",
@@ -21,9 +20,8 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "commit": "git-cz",
     "commitmsg": "node_modules/.bin/validate-commit-msg",
-    "prepush": "yarn test && yar check-coverage",
-    "postmerge": "yarn",
-    "postrewrite": "yarn"
+    "postmerge": "yarn install",
+    "postrewrite": "yarn install"
   },
   "keywords": [],
   "author": "Robin Malfait <malfait.robin@gmail.com>",
@@ -64,7 +62,7 @@
       "types": "conventional-commit-types",
       "subjectPattern": "[a-z].+",
       "subjectPatternErrorMsg": "Subject is invalid",
-      "helpMessage": "Use `npm run commit`. The subject should complete the following sentence: 'When applied, this commit will ...''"
+      "helpMessage": "Use `yarn commit`. The subject should complete the following sentence: 'When applied, this commit will ...''"
     }
   }
 }
