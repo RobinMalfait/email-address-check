@@ -1,14 +1,27 @@
 {
   "name": "email-address-check",
-  "version": "0.3.0",
+  "version": "0.0.0-development",
   "description": "Validate e-mail addresses based on syntax and dns records",
   "main": "lib/validate-email.js",
   "module": "lib/validate-email.es6.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RobinMalfait/email-address-check.git"
+  },
   "scripts": {
+    "prestart": "yarn build",
+    "start": "micro service/index.js",
     "build": "NODE_ENV=production rollup -c",
-    "watch": "NODE_ENV=production rollup -c --watch",
+    "watch": "yarn build -- --watch",
     "test": "NODE_ENV=test jest",
-    "tdd": "NODE_ENV=test jest --watchAll"
+    "tdd": "yarn test -- --watchAll",
+    "publish-coverage": "codecov",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz",
+    "commitmsg": "node_modules/.bin/validate-commit-msg",
+    "prepush": "yarn test && yar check-coverage",
+    "postmerge": "yarn",
+    "postrewrite": "yarn"
   },
   "keywords": [],
   "author": "Robin Malfait <malfait.robin@gmail.com>",
@@ -20,6 +33,9 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
     "babel-preset-jest": "^20.0.3",
+    "codecov": "^2.2.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "jest": "^20.0.4",
     "rollup": "^0.45.2",
     "rollup-plugin-babel": "^2.7.1",
@@ -28,6 +44,25 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.3.1",
-    "uglify-es": "^3.0.24"
+    "semantic-release": "^6.3.6",
+    "uglify-es": "^3.0.24",
+    "validate-commit-msg": "^2.12.2"
+  },
+  "dependencies": {
+    "micro": "^7.3.3",
+    "micro-compress": "^1.0.0",
+    "micro-cors": "^0.0.4",
+    "micro-middleware": "^0.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "subjectPattern": "[a-z].+",
+      "subjectPatternErrorMsg": "Subject is invalid",
+      "helpMessage": "Use `npm run commit`. The subject should complete the following sentence: 'When applied, this commit will ...''"
+    }
   }
 }
