@@ -1,9 +1,11 @@
 {
-  "plugins": ["external-helpers", "transform-es2015-spread"],
   "env": {
+    "production": {
+      "plugins": ["external-helpers", "transform-es2015-spread"]
+    },
     "test": {
       "presets": ["jest"],
-      "plugins": ["babel-jest"]
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }
