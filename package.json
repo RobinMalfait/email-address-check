@@ -15,6 +15,8 @@
     "watch": "yarn build -- --watch",
     "test": "NODE_ENV=test jest",
     "tdd": "yarn test -- --watchAll",
+    "check-coverage": "yarn test -- --collectCoverageFrom=\"src/**/*.js\" --coverage",
+    "prepublish-coverage": "yarn check-coverage",
     "publish-coverage": "codecov",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "commit": "git-cz",
