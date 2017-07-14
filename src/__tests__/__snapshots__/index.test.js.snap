@@ -24,4 +24,6 @@ exports[`validator should error when specifiying value null 1`] = `[Error: E-mai
 
 exports[`validator should error when specifiying value true 1`] = `[Error: E-mail address is not a string]`;
 
+exports[`validator should error when the email address contains malformed uri decoded parts 1`] = `[Error: E-mail address has not a valid signature]`;
+
 exports[`validator should validate an email address 1`] = `true`;

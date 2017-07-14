@@ -54,4 +54,8 @@ describe("validator", () => {
       validate("example%20%20@gmail.com")
     ).rejects.toMatchSnapshot();
   });
+
+  it("should error when the email address contains malformed uri decoded parts", () => {
+    return expect(validate("example%1@gmail.com")).rejects.toMatchSnapshot();
+  });
 });

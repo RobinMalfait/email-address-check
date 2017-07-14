@@ -18,7 +18,13 @@ async function validateEmail(email) {
   }
 
   // Make sure the email address does not contain encoded characters
-  email = decodeURIComponent(email);
+  try {
+    if (decodeURIComponent(email) !== email) {
+      throw new Error();
+    }
+  } catch (err) {
+    throw new Error("E-mail address has not a valid signature");
+  }
 
   // Make sure the email address is in lowercase
   email = email.toLowerCase();
