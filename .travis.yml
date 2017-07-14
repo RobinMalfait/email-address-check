@@ -7,7 +7,7 @@ cache:
   directories:
     - node_modules
 before_script:
-  - travis_retry npm install
+  - travis_retry yarn
 script:
-  - travis_retry npm run test
-  - travis_retry npm run build
+  - travis_retry yarn test
+  - travis_retry yarn build
