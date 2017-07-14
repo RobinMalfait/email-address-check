@@ -7,6 +7,8 @@ import { minify } from "uglify-es";
 
 const PACKAGE = require("./package.json");
 
+process.env.NODE_ENV = "production";
+
 export default {
   entry: "./src/index.js",
   targets: [
