@@ -1,6 +1,20 @@
+import fs from "fs";
+import path from "path";
 import validate from "../index";
+import hostname_rules from "../hostname_rules";
 
 describe("validator", () => {
+  it("should register all the hostname rules", () => {
+    const to_ignore = ["__tests__", "index.js"];
+    expect(hostname_rules.map(host => host.name).sort()).toEqual(
+      fs
+        .readdirSync(path.resolve(__dirname, "../hostname_rules"))
+        .filter(path => !to_ignore.includes(path))
+        .map(path => path.split(".")[0])
+        .sort()
+    );
+  });
+
   it("should error when not specifiying an email", () => {
     return expect(validate()).rejects.toMatchSnapshot();
   });

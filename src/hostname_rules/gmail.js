@@ -1,4 +1,5 @@
 const validator = {
+  name: "gmail",
   hostname: /g(oogle)?mail\.com/i,
   validate(username) {
     // Gmail will ignore everything after the + sign

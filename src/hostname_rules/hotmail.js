@@ -1,4 +1,5 @@
 const validator = {
+  name: "hotmail",
   hostname: /(hotmail|outlook)\.(com|[a-z]{2})/i,
   validate(username) {
     // Hotmail wants the username in the range of [1, 64[

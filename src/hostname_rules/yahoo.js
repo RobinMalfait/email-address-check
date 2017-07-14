@@ -1,4 +1,5 @@
 const validator = {
+  name: "yahoo",
   hostname: /yahoo\.(com|[a-z]{2})/i,
   validate(username) {
     // Yahoo wants the username in the range of [4, 32[
