@@ -1,5 +1,5 @@
 const { applyMiddleware } = require("micro-middleware");
-const { validate } = require("..");
+const { validate } = require("../lib/validate-email");
 
 async function service(req, res) {
   const email = req.url.substr(1);
