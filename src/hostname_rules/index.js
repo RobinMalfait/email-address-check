@@ -1,5 +1,7 @@
+import aol from "./aol";
 import gmail from "./gmail";
-import yahoo from "./yahoo";
 import hotmail from "./hotmail";
+import icloud from "./icloud";
+import yahoo from "./yahoo";
 
-export default [gmail, yahoo, hotmail];
+export default [aol, gmail, hotmail, icloud, yahoo];
