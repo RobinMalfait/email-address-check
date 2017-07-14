@@ -1,6 +1,6 @@
 {
   "name": "advanced-email-validation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Validate e-mail addresses based on syntax and check dns records",
   "main": "lib/validate-email.js",
   "module": "lib/validate-email.es6.js",
