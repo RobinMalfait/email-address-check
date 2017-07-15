@@ -1,4 +1,4 @@
-# Skedify URI-Encoding
+# Email Address Check
 
 **Release:**
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/RobinMalfait/email-address-check/develop/LICENSE)
@@ -11,6 +11,10 @@
 [![Code Coverage](https://codecov.io/gh/RobinMalfait/email-address-check/branch/develop/graph/badge.svg)](https://codecov.io/gh/RobinMalfait/email-address-check)
 [![GitHub issues](https://img.shields.io/github/issues/RobinMalfait/email-address-check.svg)](https://github.com/RobinMalfait/email-address-check/issues)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## What?
+
+It validates email addresses based on there format, rules by ESP's and dns records.
 
 ## Contributing
 
