@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import yahoo from "../yahoo";
 
 const validate = email => {
-  return yahoo.validate(...email.split("@"));
+  return ruler(yahoo.validate)(...email.split("@"));
 };
 
 describe("yahoo", () => {

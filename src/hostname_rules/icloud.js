@@ -1,35 +1,27 @@
+import {
+  between,
+  existsOf,
+  consecutive,
+  disallow,
+  startsWithLetter
+} from "../rules";
+
 const validator = {
   name: "icloud",
   hostname: /icloud\.com/i,
-  validate(username) {
+  validate: [
     // icloud only wants usernames in the range of [6, 30[
-    const length = username.length;
-    if (length < 3 || length > 20) {
-      return false;
-    }
+    between(3, 20),
 
     // icloud only allows letters, numbers and periods
-    const valid_regex = /[a-z0-9.]+/;
-    const [match] = username.match(valid_regex);
-    if (match !== username) {
-      return false;
-    }
+    existsOf(/[a-z0-9.]+/),
 
     // icloud does not allow consecutive periods
-    const consecutive_periods_regex = /\.{2,}/;
-    if (consecutive_periods_regex.test(username)) {
-      return false;
-    }
+    disallow(consecutive(".")),
 
     // icloud wants the email to start with a letter
-    const has_one_letter_regex = /^[a-z]/;
-    if (!has_one_letter_regex.test(username)) {
-      return false;
-    }
-
-    // Probably valid
-    return true;
-  }
+    startsWithLetter()
+  ]
 };
 
 export default validator;

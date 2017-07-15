@@ -1,53 +1,37 @@
+import {
+  between,
+  existsOf,
+  consecutive,
+  sequence,
+  disallow,
+  startsWithLetter
+} from "../rules";
+
 const validator = {
   name: "yahoo",
   hostname: /yahoo\.(com|[a-z]{2})/i,
-  validate(username) {
+  validate: [
     // Yahoo wants the username in the range of [4, 32[
-    if (username.length < 4 || username.length > 32) {
-      return false;
-    }
+    between(4, 32),
 
     // Yahoo wants the username to start with a letter
-    const is_letter_regex = /[a-z]/;
-    if (!is_letter_regex.test(username.charAt(0))) {
-      return false;
-    }
+    startsWithLetter(),
 
     // Yahoo only allows letters, numbers, periods and underscores
-    const valid_regex = /[a-z0-9._]+/;
-    const [match] = username.match(valid_regex);
-    if (match !== username) {
-      return false;
-    }
+    existsOf(/[a-z0-9._]+/),
 
-    // Yahoo does not allow consecutive periods and underscores [invalids eg.:.. __ _. ._]
-    //  Consecutive periods ..
-    const consecutive_periods_regex = /\.{2,}/;
-    if (consecutive_periods_regex.test(username)) {
-      return false;
-    }
+    // Yahoo does not allow consecutive periods ..
+    disallow(consecutive(".")),
 
-    //  Consecutive underscores __
-    const consecutive_underscores_regex = /\_{2,}/;
-    if (consecutive_underscores_regex.test(username)) {
-      return false;
-    }
+    // Yahoo does not allow consecutive underscores __
+    disallow(consecutive("_")),
 
-    //  Period after underscore _.
-    const period_after_underscore_regex = /\_\./;
-    if (period_after_underscore_regex.test(username)) {
-      return false;
-    }
+    // Yahoo does not allow a period after an underscore _.
+    disallow(sequence("_.")),
 
-    //  Underscore after period ._
-    const underscore_after_period_regex = /\.\_/;
-    if (underscore_after_period_regex.test(username)) {
-      return false;
-    }
-
-    // Probably valid
-    return true;
-  }
+    // Yahoo does not allow an underscore after a period ._
+    disallow(sequence("._"))
+  ]
 };
 
 export default validator;

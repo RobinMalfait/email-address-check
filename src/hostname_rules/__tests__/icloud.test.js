@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import icloud from "../icloud";
 
 const validate = email => {
-  return icloud.validate(...email.split("@"));
+  return ruler(icloud.validate)(...email.split("@"));
 };
 
 describe("icloud", () => {

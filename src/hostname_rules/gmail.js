@@ -1,41 +1,29 @@
+import { between, existsOf, consecutive, disallow, mutate } from "../rules";
+
 const validator = {
   name: "gmail",
   hostname: /g(oogle)?mail\.com/i,
-  validate(username) {
+  validate: [
     // Gmail will ignore everything after the + sign
-    const username_to_validate = username.split("+")[0];
+    mutate(username => username.split("+")[0]),
 
     // Gmail only wants usernames in the range of [6, 30[
-    const length = username_to_validate.length;
-    if (length < 6 || length > 30) {
-      return false;
-    }
+    between(6, 30),
 
     // Gmail only allows letters, numbers and periods
-    const valid_regex = /[a-z0-9.]+/;
-    const [match] = username_to_validate.match(valid_regex);
-    if (match !== username_to_validate) {
-      return false;
-    }
+    existsOf(/[a-z0-9.]+/),
 
     // Gmail does not allow consecutive periods
-    const consecutive_periods_regex = /\.{2,}/;
-    if (consecutive_periods_regex.test(username_to_validate)) {
-      return false;
-    }
+    disallow(consecutive(".")),
 
     // Gmail wants at least 1 letter if you have more than 8 characters
-    const has_one_letter_regex = /[a-z]/;
-    if (
-      username_to_validate.length > 8 &&
-      !has_one_letter_regex.test(username_to_validate)
-    ) {
-      return false;
+    (username, hostname) => {
+      const has_one_letter_regex = /[a-z]/;
+      if (username.length > 8 && !has_one_letter_regex.test(username)) {
+        return false;
+      }
     }
-
-    // Probably valid
-    return true;
-  }
+  ]
 };
 
 export default validator;
