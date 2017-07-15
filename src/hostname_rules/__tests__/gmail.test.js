@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import gmail from "../gmail";
 
 const validate = email => {
-  return gmail.validate(...email.split("@"));
+  return ruler(gmail.validate)(...email.split("@"));
 };
 
 describe("gmail", () => {

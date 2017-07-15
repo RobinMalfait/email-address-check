@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import aol from "../aol";
 
 const validate = email => {
-  return aol.validate(...email.split("@"));
+  return ruler(aol.validate)(...email.split("@"));
 };
 
 describe("aol", () => {

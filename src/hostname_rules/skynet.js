@@ -1,23 +1,15 @@
+import { between, existsOf } from "../rules";
+
 const validator = {
   name: "skynet",
   hostname: /Skynet\.(com|[a-z]{2})/i,
-  validate(username) {
+  validate: [
     // Skynet only wants usernames in the range of [3, 26[
-    const length = username.length;
-    if (length < 3 || length > 26) {
-      return false;
-    }
+    between(3, 26),
 
     // Skynet only allows letters, numbers, periods, dashes and underscores
-    const valid_regex = /[a-z0-9._-]+/;
-    const [match] = username.match(valid_regex);
-    if (match !== username) {
-      return false;
-    }
-
-    // Probably valid
-    return true;
-  }
+    existsOf(/[a-z0-9._-]+/)
+  ]
 };
 
 export default validator;

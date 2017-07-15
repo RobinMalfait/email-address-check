@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import skynet from "../skynet";
 
 const validate = email => {
-  return skynet.validate(...email.split("@"));
+  return ruler(skynet.validate)(...email.split("@"));
 };
 
 describe("skynet", () => {

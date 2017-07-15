@@ -1,7 +1,8 @@
+import ruler from "../../rules/ruler";
 import hotmail from "../hotmail";
 
 const validate = email => {
-  return hotmail.validate(...email.split("@"));
+  return ruler(hotmail.validate)(...email.split("@"));
 };
 
 describe("hotmail", () => {
