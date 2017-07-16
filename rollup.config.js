@@ -1,5 +1,6 @@
 import resolve from "rollup-plugin-node-resolve";
 import babel from "rollup-plugin-babel";
+import replace from "rollup-plugin-replace";
 import commonjs from "rollup-plugin-commonjs";
 import builtins from "rollup-plugin-node-builtins";
 import uglify from "rollup-plugin-uglify";
@@ -31,6 +32,9 @@ export default {
     }),
     babel({
       exclude: "node_modules/**"
+    }),
+    replace({
+      "#!/usr/bin/env node": ""
     }),
     commonjs(),
     builtins(),
