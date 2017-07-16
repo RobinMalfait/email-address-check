@@ -3,7 +3,7 @@ import promisify from "./promisify";
 
 const dnsLookup = promisify(dns.lookup);
 
-export default async function getIPAddress(hostname) {
+async function getIPAddress(hostname) {
   const hostname_ip_regex = /(\[(.*)\])/;
 
   if (hostname_ip_regex.test(hostname)) {
@@ -13,3 +13,5 @@ export default async function getIPAddress(hostname) {
   const [ip] = await dnsLookup(hostname);
   return ip;
 }
+
+export default getIPAddress;
