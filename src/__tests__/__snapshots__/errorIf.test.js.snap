@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`errorIf should throw an error,  1`] = `[Error: the actual error message]`;
+
+exports[`errorIf should throw an error, when the predicate already throws an error 1`] = `[Error: the actual error message]`;
+
+exports[`errorIf should throw an error, when the predicate condition is fn that resolves to true 1`] = `[Error: the actual error message]`;
+
+exports[`errorIf should throw an error, when the predicate condition is true 1`] = `[Error: the actual error message]`;

@@ -10,8 +10,12 @@ async function getIPAddress(hostname) {
     return hostname.replace("[", "").replace("]", "");
   }
 
-  const [ip] = await dnsLookup(hostname);
-  return ip;
+  try {
+    const [ip] = await dnsLookup(hostname);
+    return ip;
+  } catch (err) {
+    throw new Error("Hostname not found");
+  }
 }
 
 export default getIPAddress;

@@ -28,4 +28,6 @@ exports[`validator should error when the email address contains malformed uri de
 
 exports[`validator should error when the hostname is blacklisted 1`] = `[Error: E-mail address has been blacklisted by spamhaus.org]`;
 
+exports[`validator should error when the hostname is not found 1`] = `[Error: Hostname not found]`;
+
 exports[`validator should validate an email address 1`] = `true`;

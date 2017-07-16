@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nextTickify should reject like a promise 1`] = `[Error: this should reject]`;
+
+exports[`nextTickify should resolve like a promise 1`] = `123`;

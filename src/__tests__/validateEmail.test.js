@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import validate from "../index";
+import validate from "../validateEmail";
 import hostname_rules from "../hostname_rules";
 
 describe("validator", () => {
@@ -76,6 +76,12 @@ describe("validator", () => {
   it("should error when the hostname is blacklisted", () => {
     return expect(
       validate("example@[98.150.108.228]")
+    ).rejects.toMatchSnapshot();
+  });
+
+  it("should error when the hostname is not found", () => {
+    return expect(
+      validate("info@blablablablablablablabla.be")
     ).rejects.toMatchSnapshot();
   });
 });
