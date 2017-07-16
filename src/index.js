@@ -1,23 +1,14 @@
 const dns = require("dns");
 const dnsbl = require("dnsbl");
+
 import promisify from "./promisify";
 import validateUsernameForHostname from "./validateUsernameForHostname";
+import getIPAddress from "./getIPAddress";
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const dnsResolve = promisify(dns.resolve);
 const dnsLookup = promisify(dns.lookup);
-
-async function getIPAddress(hostname) {
-  const hostname_ip_regex = /(\[(.*)\])/;
-
-  if (hostname_ip_regex.test(hostname)) {
-    return hostname.replace("[", "").replace("]", "");
-  }
-
-  const [ip] = await dnsLookup(hostname);
-  return ip;
-}
 
 async function validateEmail(email) {
   // Do we have a value

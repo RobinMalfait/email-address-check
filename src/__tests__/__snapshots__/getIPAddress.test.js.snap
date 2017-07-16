@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getIPAddress should return the ip address for the hostname 1`] = `"93.184.216.34"`;
+
+exports[`getIPAddress should return the ip address if the hostname already is an ip address 1`] = `"127.0.0.1"`;
