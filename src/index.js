@@ -1,5 +1,5 @@
 const dns = require("dns");
-import dnsbl from "dnsbl";
+const dnsbl = require("dnsbl");
 import promisify from "./promisify";
 import validateUsernameForHostname from "./validateUsernameForHostname";
 
