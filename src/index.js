@@ -1,6 +1,8 @@
 const dns = require("dns");
+import dnsbl from "dnsbl";
 import promisify from "./promisify";
 import validateUsernameForHostname from "./validateUsernameForHostname";
+import getIPAddress from "./getIPAddress";
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -42,24 +44,21 @@ async function validateEmail(email) {
     throw new Error("E-mail address did not match the rules for " + hostname);
   }
 
+  // Is the IP address blacklisted?
+  const ip = await getIPAddress(hostname);
+  if (await dnsbl.lookup(ip, "zen.spamhaus.org")) {
+    throw new Error("E-mail address has been blacklisted by spamhaus.org");
+  }
+
   try {
     // Did we find MX records
     const mx_records = await dnsResolve(hostname, "MX");
     if (mx_records.length !== 0) {
       return true;
     }
-
-    // Did we find A records
-    const a_records = await dnsResolve(hostname, "A");
-    if (a_records.length !== 0) {
-      return true;
-    }
   } catch (err) {
     throw new Error("Hostname does not have any DNS records attached");
   }
-
-  // Nope
-  throw new Error("E-mail address is probably invalid");
 }
 
 export function validate(email) {

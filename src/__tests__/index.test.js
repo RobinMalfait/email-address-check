@@ -72,4 +72,10 @@ describe("validator", () => {
   it("should error when the email address contains malformed uri decoded parts", () => {
     return expect(validate("example%1@gmail.com")).rejects.toMatchSnapshot();
   });
+
+  it("should error when the hostname is blacklisted", () => {
+    return expect(
+      validate("example@[98.150.108.228]")
+    ).rejects.toMatchSnapshot();
+  });
 });
