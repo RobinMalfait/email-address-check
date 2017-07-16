@@ -3,4 +3,6 @@ import nextTickify from "./nextTickify";
 
 export const validate = nextTickify(validateEmail);
 
-export default validate;
+export default {
+  validate
+};

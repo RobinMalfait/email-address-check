@@ -1,7 +1,7 @@
 const dns = require("dns");
 import promisify from "./promisify";
 
-const dnsLookup = promisify(dns.lookup);
+const dnsResolve = promisify(dns.resolve);
 
 async function getIPAddress(hostname) {
   const hostname_ip_regex = /(\[(.*)\])/;
@@ -11,7 +11,7 @@ async function getIPAddress(hostname) {
   }
 
   try {
-    const [ip] = await dnsLookup(hostname);
+    const [ip] = await dnsResolve(hostname, "A");
     return ip;
   } catch (err) {
     throw new Error("Hostname not found");
