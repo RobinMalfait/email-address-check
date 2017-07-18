@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`validateRules should early return when a rule returns true 1`] = `true`;
-
-exports[`validateRules should mutate the input if a mutator is defined 1`] = `[Error: my new input]`;

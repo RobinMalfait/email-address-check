@@ -17,6 +17,7 @@
     "prepublish-coverage": "yarn check-coverage",
     "publish-coverage": "codecov",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "precommit": "lint-staged",
     "commit": "git-cz",
     "commitmsg": "node_modules/.bin/validate-commit-msg",
     "postmerge": "yarn install",
@@ -35,7 +36,10 @@
     "codecov": "^2.2.0",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.14.3",
     "jest": "^20.0.4",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3",
     "rollup": "^0.45.2",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -46,6 +50,9 @@
     "semantic-release": "^6.3.6",
     "uglify-es": "^3.0.24",
     "validate-commit-msg": "^2.12.2"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --write", "git add"]
   },
   "config": {
     "commitizen": {
