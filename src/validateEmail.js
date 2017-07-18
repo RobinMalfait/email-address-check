@@ -13,7 +13,6 @@ async function isBlacklisted(hostname) {
     const ip = await getIPAddress(hostname);
     return await dnsbl.lookup(ip, "zen.spamhaus.org");
   } catch (err) {
-    console.log({ err });
     return false;
   }
 }
