@@ -9,63 +9,36 @@
     "url": "https://github.com/RobinMalfait/email-address-check.git"
   },
   "scripts": {
-    "build": "rollup -c",
-    "watch": "yarn build -- --watch",
+    "build": "microbundle --name ValidateEmail",
+    "dev": "microbundle --name ValidateEmail watch",
+    "format": "prettier src/**/*.js --write",
     "test": "NODE_ENV=test jest",
     "tdd": "yarn test -- --watchAll",
-    "check-coverage": "yarn test -- --collectCoverageFrom=\"src/**/*.js\" --coverage",
-    "prepublish-coverage": "yarn check-coverage",
-    "publish-coverage": "codecov",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "precommit": "lint-staged",
     "commit": "git-cz",
-    "commitmsg": "node_modules/.bin/validate-commit-msg",
-    "postmerge": "yarn install",
-    "postrewrite": "yarn install"
+    "semantic-release": "semantic-release --branch master"
   },
   "keywords": [],
   "author": "Robin Malfait <malfait.robin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-es2015-spread": "^6.22.0",
-    "babel-preset-jest": "^20.0.3",
-    "codecov": "^2.2.0",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.0.0",
-    "husky": "^0.14.3",
-    "jest": "^20.0.4",
-    "lint-staged": "^4.0.2",
-    "prettier": "^1.5.3",
-    "rollup": "^0.45.2",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "rollup-watch": "^4.3.1",
-    "semantic-release": "^6.3.6",
-    "uglify-es": "^3.0.24",
-    "validate-commit-msg": "^2.12.2"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-jest": "^24.0.0",
+    "jest": "^24.0.0",
+    "microbundle": "^0.9.0",
+    "prettier": "^1.16.1",
+    "semantic-release": "^15.13.3",
+    "@commitlint/cli": "^7.3.2",
+    "@commitlint/config-conventional": "^7.3.1",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0"
   },
-  "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
+  "dependencies": {
+    "dnsbl": "^3.1.1"
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    },
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "subjectPattern": "[a-z].+",
-      "subjectPatternErrorMsg": "Subject is invalid",
-      "helpMessage": "Use `yarn commit`. The subject should complete the following sentence: 'When applied, this commit will ...''"
+      "path": "cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "dnsbl": "^1.1.8"
   }
 }

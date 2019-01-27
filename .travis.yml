@@ -1,16 +1,15 @@
 language: node_js
-cache: 
+cache:
   yarn: true
   directories:
     - node_modules
 notifications:
   email: false
 node_js:
-  - '7'
+  - "10"
 before_script:
   - travis_retry yarn build
 after_success:
-  - yarn publish-coverage
   - yarn semantic-release
 branches:
   except:
